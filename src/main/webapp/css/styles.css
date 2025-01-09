@@ -1,0 +1,15 @@
+h2 {
+    text-align: center
+}
+
+body {
+    background-color: #00a9b4;
+}
+
+.blue-text {
+    color: blue;
+}
+
+#my-id {
+    font-size: 500px;
+}
