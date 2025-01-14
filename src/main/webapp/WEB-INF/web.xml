@@ -4,33 +4,7 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-    
-
-
-    <filter>
-        <filter-name>filter-one</filter-name>
-        <filter-class>filter.MyFirstFilter</filter-class>
-    </filter>
-    
-    <filter-mapping>
-        <filter-name>filter-one</filter-name>
-        <url-pattern>/good-bye</url-pattern>
-    </filter-mapping>
-    
-    <listener>
-        <listener-class>listener.SessionAtrListener</listener-class>
-    </listener>
-    
-    <servlet>
-        <servlet-name>hello</servlet-name>
-        <servlet-class>servlet.HelloWorldServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>hello</servlet-name>
-        <url-pattern>/hello-world-servlet</url-pattern>
-    </servlet-mapping>
-
     <welcome-file-list>
-        <welcome-file>init.html</welcome-file>
+        <welcome-file>login.html</welcome-file>
     </welcome-file-list>
 </web-app>

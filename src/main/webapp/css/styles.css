@@ -1,15 +1,64 @@
-h2 {
-    text-align: center
+#login-body-div {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-body {
-    background-color: #00a9b4;
+#login-form {
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    width: 300px;
 }
 
-.blue-text {
-    color: blue;
+label {
+    display: block;
+    margin: 5px 0;
 }
 
-#my-id {
-    font-size: 500px;
+input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 4px;
 }
+
+#button-login {
+    margin-top: 15px;
+    background-color: #5cb85c;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+#button-login:hover {
+    background-color: #419541;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
