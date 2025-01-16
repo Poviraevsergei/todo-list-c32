@@ -44,6 +44,31 @@ input {
     background-color: #419541;
 }
 
+.header-buttons{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+/*    display: flex;
+    justify-items: right;*/
+}
+
+.header-buttons form {
+    display: inline;
+}
+
+#about-me-id{
+    margin-top: 150px;
+}
+
+#profile-photo{
+    max-width: 70%;
+    border-radius: 50%;
+}
+
+#about-me-text-id{
+    display: flex;
+    align-items: center;
+}
 
 
 
