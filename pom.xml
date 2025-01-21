@@ -15,6 +15,13 @@
       <version>6.1.0</version>
       <scope>provided</scope>
     </dependency>
+      
+      <dependency>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>apache-jstl</artifactId>
+          <version>11.0.0</version>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>todo-list-c32</finalName>

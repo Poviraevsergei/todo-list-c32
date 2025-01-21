@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import repository.UserRepository;
 
 import java.io.IOException;
 
@@ -27,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         if (isValidUser) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
-            req.getRequestDispatcher("/page/todo-list.html").forward(req, resp);
+            resp.sendRedirect("/todo");
         } else {
             req.getRequestDispatcher("/login.html").forward(req, resp);
         }
@@ -39,7 +40,7 @@ public class LoginServlet extends HttpServlet {
         if (username == null) {
             req.getRequestDispatcher("/login.html").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/page/todo-list.html").forward(req, resp);
+            req.getRequestDispatcher("/todo").forward(req, resp);
         }
     }
 }
