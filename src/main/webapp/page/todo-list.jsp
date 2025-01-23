@@ -15,7 +15,7 @@
 
 <div class="header-buttons">
     <form action="about-me" method="GET">
-        <button type="submit" id="button-about-me">Todo-list page</button>
+        <button type="submit" id="button-about-me">About me</button>
     </form>
     <form action="logout" method="POST">
         <button type="submit" id="logout-button">Logout</button>
@@ -29,13 +29,19 @@
 
 <h2>Task list:</h2>
 
-<c:if test="${tasks == null}">
+<c:if test="${tasks == null || tasks.isEmpty()}">
     <h4>There are no active tasks!</h4>
 </c:if>
 
 <ol>
     <c:forEach var="task" items="${tasks}">
-        <li>${task}</li>
+        <li>
+            <span id="task-text">${task}</span>
+            <form action="todo" method="POST">
+                <input type="hidden" name="deletedTask" value="${task}">
+                <input type="submit" value="Delete" id="delete-button">
+            </form>
+        </li>
     </c:forEach>
 </ol>
 </body>

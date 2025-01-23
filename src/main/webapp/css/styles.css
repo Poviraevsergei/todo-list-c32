@@ -95,11 +95,11 @@ input {
     background-color: #a20000;
 }
 
-input[type="text"]{
+input[type="text"] {
     margin-bottom: 10px;
 }
 
-#task-btn{
+#task-btn {
     padding: 10px;
     width: 100%;
     color: white;
@@ -110,10 +110,30 @@ input[type="text"]{
     background-color: #5cb85c;
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover {
     background-color: #419541;
 }
 
+li {
+    display: flex;
+    align-items: center;
+}
+
+#delete-button {
+    background-color: #ff0202;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#delete-button:hover {
+    background-color: #a20000;
+}
+
+#task-text {
+    flex-grow: 1;
+}
 
 
 
