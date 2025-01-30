@@ -20,4 +20,8 @@ public class UserRepository {
         }
         return false;
     }
+
+    public static Boolean isContainsUserByUsername(String username) {
+        return users.containsKey(username);
+    }
 }

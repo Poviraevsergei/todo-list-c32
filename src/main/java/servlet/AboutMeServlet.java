@@ -11,6 +11,11 @@ import java.io.IOException;
 @WebServlet("/about-me")
 public class AboutMeServlet extends HttpServlet {
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/page/about-me-page.html").forward(req, resp);
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/page/about-me.html").forward(req, resp);
     }
