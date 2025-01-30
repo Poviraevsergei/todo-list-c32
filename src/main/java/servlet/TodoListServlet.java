@@ -27,7 +27,7 @@ public class TodoListServlet extends HttpServlet {
         Set<String> tasks = taskRepository.getTasksByUsername(username);
 
         req.setAttribute("tasks", tasks);
-        req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/page/todo-list.jsp").forward(req, resp);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TodoListServlet extends HttpServlet {
 
         req.setAttribute("tasks", tasks);
 
-        req.getRequestDispatcher("/page/todo-list.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/page/todo-list.jsp").forward(req, resp);
     }
 }
 

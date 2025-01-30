@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../../css/styles.css" rel="stylesheet">
 
     <style>
         <%@include file="/css/styles.css"%>
