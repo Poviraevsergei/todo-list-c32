@@ -9,9 +9,16 @@ import jakarta.servlet.http.HttpSession;
 import repository.UserRepository;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    UserRepository userRepository;
+
+    public LoginServlet() {
+        this.userRepository = new UserRepository();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Устанавливаем тип контента
@@ -22,7 +29,12 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         //Аутентификация пользователя
-        boolean isValidUser = UserRepository.isValid(username, password);
+        boolean isValidUser = false;
+        try {
+            isValidUser = userRepository.isValid(username, password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         //Готовим ответ
         if (isValidUser) {

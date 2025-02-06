@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpSession;
 import repository.UserRepository;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
 
 @WebFilter(value = {
         "/about-me",
@@ -18,16 +20,26 @@ import java.io.IOException;
 })
 public class AuthFilter implements Filter {
 
+    UserRepository userRepository;
+
+    public AuthFilter() {
+        userRepository = new UserRepository();
+    }
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest servletRequest = (HttpServletRequest) request;
         HttpSession session = servletRequest.getSession();
         String username = (String) session.getAttribute("username");
 
-        if (username != null && UserRepository.isContainsUserByUsername(username)) {
-            chain.doFilter(request, response);
-        } else {
-            request.getRequestDispatcher("/login").forward(request, response);
+        try {
+            if (username != null && userRepository.isContainsUserByUsername(username)) {
+                chain.doFilter(request, response);
+            } else {
+                request.getRequestDispatcher("/login").forward(request, response);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
