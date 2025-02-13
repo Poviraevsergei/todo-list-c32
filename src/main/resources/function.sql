@@ -32,4 +32,21 @@ AS
     END;
 ';
 
-CALL delete_user_by_firstname('Bill2')
+CALL delete_user_by_firstname('Bill2');
+
+
+----
+
+
+CREATE TRIGGER add_user_create_trg AFTER INSERT ON users FOR EACH ROW EXECUTE FUNCTION add_log();
+
+CREATE FUNCTION add_log()
+    RETURNS trigger
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    INSERT INTO logs(id, text, created) VALUES (DEFAULT, 'Added user with id=' || NEW.id, NOW());
+    return NEW;
+END;
+$$;
