@@ -8,9 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class UserRepository {
@@ -32,37 +30,22 @@ public class UserRepository {
         return users;
     }
 
-    //TODO: CHANGE LOGIC TO SECURITY
-    public Boolean isValid(String username, String password) throws SQLException {
-        User userFromDatabase = null;
+    public Boolean isValid(String login, String password) throws SQLException {
         Connection connection = databaseService.getConnection();
         PreparedStatement statement = connection.prepareStatement(SQLQuery.IS_VALID);
-        statement.setString(1, username);
+        statement.setString(1, login);
         statement.setString(2, password);
 
         ResultSet result = statement.executeQuery();
-        while (result.next()) {
-            userFromDatabase = parseUser(result);
-        }
-        
-/*        if (userFromDatabase == null || userFromDatabase.getUsername() == null || userFromDatabase.getUserPassword() == null) {
-            return false;
-        }
-        if (userFromDatabase.getUsername().equals(username)) {
-            return userFromDatabase.getUserPassword().equals(password);
-        }*/
-        return false;
+        return result.next();
     }
 
-    //TODO: CHANGE LOGIC TO SECURITY
-    public Boolean isContainsUserByUsername(String username) throws SQLException {
-        Set<User> allUsers = getAllUsers();
-        for (User user : allUsers) {
-   /*         if (user.getUsername().equals(username)) {
-                return true;
-            }*/
-        }
-        return false;
+    public Boolean isContainsUserByUsername(String login) throws SQLException {
+        Connection connection = databaseService.getConnection();
+        PreparedStatement statement = connection.prepareStatement(SQLQuery.GET_SECURITY_BY_LOGIN);
+        statement.setString(1, login);
+        ResultSet result = statement.executeQuery();
+        return result.next();
     }
 
     public User parseUser(ResultSet result) throws SQLException {
@@ -78,7 +61,7 @@ public class UserRepository {
 
     public Boolean addUser(String firstName, String secondName, int age, String login, String password) throws SQLException {
         Connection connection = databaseService.getConnection();
-        
+
         try {
             connection.setAutoCommit(false);
             PreparedStatement createUserStatement = connection.prepareStatement(SQLQuery.CREATE_USER, Statement.RETURN_GENERATED_KEYS);
